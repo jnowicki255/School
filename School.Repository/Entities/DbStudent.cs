@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace School.Repository.Entities
 {
@@ -12,8 +13,7 @@ namespace School.Repository.Entities
         [StringLength(50)]
         public string FirstName { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string LastName { get; set; }
 
         [Precision(0)]
@@ -21,5 +21,9 @@ namespace School.Repository.Entities
 
         [StringLength(15)]
         public string Telephone { get; set; }
+
+        public int? ClassId { get; set; }
+
+        public DbClass Class { get; set; }
     }
 }

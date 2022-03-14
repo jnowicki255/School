@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace School.Repository.Entities
 {
     public class DbSubject
     {
+        [Key]
+        public int SubjectId { get; set; }
+        
+        [Required, StringLength(25)]
+        public string Name { get; set; }
+
+        public ICollection<DbTeacher> Teachers { get; set; }
     }
 }
