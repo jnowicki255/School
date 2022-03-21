@@ -14,11 +14,6 @@ namespace School.Repository.Entities
         [Required, StringLength(50)]
         public string LastName { get; set; }
 
-        public int? ClassId { get; set; }
-
-        [ForeignKey(nameof(ClassId))]
-        public DbClass Class { get; set; }
-
         public ICollection<DbSubject> Subjects { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace School.Repository.Entities
 
         public int? ClassId { get; set; }
 
+        [ForeignKey(nameof(ClassId))]
         public DbClass Class { get; set; }
     }
 }
