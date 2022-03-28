@@ -29,17 +29,28 @@ namespace School.Repository.Repos
 
         public DbSubject GetSubject(int subjectId)
         {
-            throw new NotImplementedException();
+            var subject = dbContext.Subjects
+                .SingleOrDefault(x => x.SubjectId == subjectId);
+
+            return subject;
         }
 
         public DbSubject[] GetSubjects()
         {
-            throw new NotImplementedException();
+            var subjects = dbContext.Subjects.ToArray();
+            return subjects;
         }
 
         public void UpdateSubject(DbSubject updatedSubject)
         {
-            throw new NotImplementedException();
+            var subject = dbContext.Subjects
+                .SingleOrDefault(x => x.SubjectId == updatedSubject.SubjectId);
+
+            if (subject == null)
+                return;
+
+            dbContext.Entry(subject).CurrentValues.SetValues(updatedSubject);
+            dbContext.SaveChanges();
         }
     }
 }

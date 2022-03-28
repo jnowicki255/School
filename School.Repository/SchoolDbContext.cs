@@ -9,10 +9,10 @@ namespace School.Repository
         public SchoolDbContext()
         { }
 
-        public SchoolDbContext(ISqlDbSettings settings)
-            : base(new DbContextOptionsBuilder<SchoolDbContext>()
-                  .UseSqlServer(settings.ConnectionString).Options)
-        { }
+        //public SchoolDbContext(ISqlDbSettings settings)
+        //    : base(new DbContextOptionsBuilder<SchoolDbContext>()
+        //          .UseSqlServer(settings.ConnectionString).Options)
+        //{ }
 
         public SchoolDbContext(DbContextOptions<SchoolDbContext> options)
             : base(options)
@@ -34,7 +34,9 @@ namespace School.Repository
                     "Trusted_Connection=True; " +
                     "MultipleActiveResultSets=true"
                 };
-                optionsBuilder.UseSqlServer(dbSettings.ConnectionString);
+                optionsBuilder.UseMySql(dbSettings.ConnectionString, 
+                    ServerVersion.AutoDetect(dbSettings.ConnectionString));
+                //optionsBuilder.UseSqlServer(dbSettings.ConnectionString);
             }
         }
 
